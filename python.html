@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Ultimate Handbook | Hamraz Code Hub</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Space+Grotesk:wght@400;600;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: #02050a; color: #d1d9e0;
+            font-family: 'Space Grotesk', sans-serif; min-height: 100vh;
+        }
+
+        body::before {
+            content: ''; position: fixed; top: 0; left: 0; width: 4px; height: 100%;
+            background: linear-gradient(to bottom, transparent, #00ff66, transparent);
+            box-shadow: 0 0 15px #00ff66; z-index: 1000;
+        }
+
+        header {
+            width: 100%; padding: 20px 6%; background: rgba(2, 5, 10, 0.95);
+            backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0, 255, 102, 0.2);
+            display: flex; justify-content: space-between; align-items: center;
+            position: fixed; top: 0; left: 0; z-index: 999;
+        }
+
+        .logo { font-size: 1.8rem; font-weight: 700; color: #ffffff; text-decoration: none; }
+        .logo span { color: #00ff66; text-shadow: 0 0 15px rgba(0, 255, 102, 0.5); }
+
+        .back-btn {
+            background: rgba(0, 255, 102, 0.08); border: 1px solid #00ff66;
+            color: #00ff66; padding: 8px 18px; border-radius: 8px;
+            font-weight: 600; text-decoration: none; transition: all 0.2s;
+        }
+        .back-btn:hover { background: #00ff66; color: #02050a; box-shadow: 0 0 15px #00ff66; }
+
+        main { margin-top: 100px; display: grid; grid-template-columns: 300px 1fr; min-height: calc(100vh - 100px); }
+
+        .sidebar {
+            background: #04080f; border-right: 1px solid rgba(255,255,255,0.05);
+            padding: 25px; position: fixed; width: 300px; height: calc(100vh - 100px); overflow-y: auto;
+        }
+
+        .sidebar h3 { color: #00ff66; font-size: 1.1rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .chapter-links { display: flex; flex-direction: column; gap: 8px; }
+        .chap-link {
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
+            color: #8b949e; padding: 12px 15px; border-radius: 8px; text-align: left;
+            cursor: pointer; font-size: 0.95rem; font-weight: 600; transition: all 0.2s;
+        }
+        .chap-link:hover, .chap-link.active {
+            background: rgba(0, 255, 102, 0.08); color: #ffffff; border-color: #00ff66;
+        }
+
+        .content-pane { margin-left: 300px; padding: 50px 6%; overflow-y: auto; }
+        .book-title { color: #00ff66; font-size: 2.5rem; font-weight: 700; margin-bottom: 5px; }
+        .book-subtitle { color: #8b949e; font-size: 1.1rem; margin-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; }
+        
+        .chapter-content { display: none; }
+        .chapter-content.active { display: block; animation: fadeIn 0.4s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .section-heading { color: #ffffff; font-size: 1.6rem; margin: 30px 0 15px 0; padding-left: 12px; border-left: 4px solid #00ff66; }
+        .book-text { color: #c9d1d9; font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px; text-align: justify; }
+        
+        .code-box {
+            background: #010409; border: 1px solid rgba(0, 255, 102, 0.15);
+            border-radius: 12px; padding: 20px; margin: 20px 0;
+            font-family: 'Fira Code', monospace; font-size: 0.95rem; line-height: 1.6; overflow-x: auto;
+        }
+        .c-kw { color: #ff7b72; font-weight: bold; }
+        .c-str { color: #a5d6ff; }
+        .c-fn { color: #d2a8ff; }
+        .c-cm { color: #768390; font-style: italic; }
+        .c-num { color: #f0883e; }
+
+        .info-box { background: rgba(0, 255, 102, 0.02); border-left: 4px solid #00ff66; padding: 15px 20px; margin: 25px 0; border-radius: 0 8px 8px 0; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">Hamraz <span>Code Hub</span></a>
+        <a href="index.html" class="back-btn">🏠 Back to Main Matrix</a>
+    </header>
+
+    <main>
+        <div class="sidebar">
+            <h3>Course Blueprint</h3>
+            <div class="chapter-links">
+                <button class="chap-link active" onclick="switchChapter(1)">Ch 1: Modules & PIP</button>
+                <button class="chap-link" onclick="switchChapter(2)">Ch 2: Variables & Data</button>
+                <button class="chap-link" onclick="switchChapter(3)">Ch 3: Strings & Slicing</button>
+                <button class="chap-link" onclick="switchChapter(4)">Ch 4: Lists & Tuples</button>
+                <button class="chap-link" onclick="switchChapter(5)">Ch 5: Dict & Sets</button>
+                <button class="chap-link" onclick="switchChapter(6)">Ch 6: Conditionals</button>
+                <button class="chap-link" onclick="switchChapter(7)">Ch 7: Loops Matrix</button>
+                <button class="chap-link" onclick="switchChapter(8)">Ch 8: Functions Core</button>
+                <button class="chap-link" onclick="switchChapter(9)">Ch 9: File I/O Storage</button>
+                <button class="chap-link" onclick="switchChapter(10)">Ch 10: OOP Blueprints</button>
+                <button class="chap-link" onclick="switchChapter(11)">Ch 11: Inheritance</button>
+                <button class="chap-link" onclick="switchChapter(12)">Ch 12: Advanced Scope</button>
+                <button class="chap-link" onclick="switchChapter(13)">Ch 13: Error Handling</button>
+                <button class="chap-link" onclick="switchChapter(14)">Ch 14: Project Deploy</button>
+            </div>
+        </div>
+
+        <div class="content-pane">
+            <h1 class="book-title">Python Core Matrix</h1>
+            <div class="book-subtitle">Ultimate Production Handbook Engine By Hamraz Tariq</div>
+
+            <div id="ch-1" class="chapter-content active">
+                <h2 class="section-heading">Chapter 1: Modules, Comments, and PIP Frameworks</h2>
+                <p class="book-text">Python ek high-level, human-readable language hai jo clean design logic par kaam karti hai. Is module mein hum computational syntax ki shuruat karenge.</p>
+                <p class="book-text"><strong>Module:</strong> Module ek aisi file hoti hai jisme pehle se likha hua code hota hai, jise hum apne project mein scale badhane ke liye use karte hain. Python mein do tarah ke modules hote hain: Built-in (jo pehle se aate hain) aur External (jo baahar se install karne padte hain).</p>
+                <div class="info-box"><p class="book-text" style="margin:0;">💡 <strong>PIP:</strong> PIP Python ka official package manager hai jiske bina aap external libraries install nahi kar sakte.</p></div>
+                <div class="code-box">
+                    <span class="c-cm"># Installing an external module via terminal</span><br>
+                    pip install flask requests numpy<br><br>
+                    <span class="c-kw">import</span> os <span class="c-cm"># Importing a built-in module</span><br>
+                    <span class="c-fn">print</span>(<span class="c-str">"Hello Engine Operational"</span>)
+                </div>
+            </div>
+
+            <div id="ch-2" class="chapter-content">
+                <h2 class="section-heading">Chapter 2: Variables and Core Dynamic Data Types</h2>
+                <p class="book-text">Variables memory ke andar reserved slots hote hain jo computational data parameters ko store karte hain. Python ek dynamically-typed language hai, jiska matlab hai ki aapko variable ka type pehle se declare nahi karna padta.</p>
+                <div class="code-box">
+                    a = <span class="c-num">45</span> <span class="c-cm"># Integer data allocated</span><br>
+                    b = <span class="c-str">"Hamraz Tariq"</span> <span class="c-cm"># String data allocated</span><br>
+                    c = <span class="c-kw">True</span> <span class="c-cm"># Boolean matrix state</span><br><br>
+                    <span class="c-fn">print</span>(<span class="c-fn">type</span>(a)) <span class="c-cm"># Outputs: &lt;class 'int'&gt;</span>
+                </div>
+            </div>
+
+            <div id="ch-3" class="chapter-content">
+                <h2 class="section-heading">Chapter 3: Deep String Structuring and Array Slicing</h2>
+                <p class="book-text">String byte characters ka ek ordered sequence hota hai. Python mein string cutting ya slicing ke zariye hum kisi bhi bada text block se specific sequence nikal sakte hain.</p>
+                <div class="code-box">
+                    hub = <span class="c-str">"HamrazCodeHub"</span><br>
+                    <span class="c-cm"># Slicing index parameters syntax [start:stop:step]</span><br>
+                    result = hub[<span class="c-num">0</span>:<span class="c-num">6</span>]<br>
+                    <span class="c-fn">print</span>(result) <span class="c-cm"># Output: Hamraz</span>
+                </div>
+            </div>
+
+            <div id="ch-4" class="chapter-content">
+                <h2 class="section-heading">Chapter 4: Lists & Ordered Tuple Performance Arrays</h2>
+                <p class="book-text">Lists mutable hoti hain, yaani unke elements ko change kiya ja sakta hai. Tuples immutable hote hain, unka data change nahi ho sakta, jo system parameters ko safe rakhta hai.</p>
+                <div class="code-box">
+                    my_list = [<span class="c-str">"Python"</span>, <span class="c-num">2026</span>, <span class="c-kw">True</span>]<br>
+                    my_list.append(<span class="c-str">"JS"</span>) <span class="c-cm"># Modifying values safely</span><br><br>
+                    my_tuple = (<span class="c-num">1</span>, <span class="c-num">2</span>, <span class="c-num">3</span>)<br>
+                    <span class="c-cm"># my_tuple[0] = 5 will throw an error state</span>
+                </div>
+            </div>
+
+            <div id="ch-5" class="chapter-content">
+                <h2 class="section-heading">Chapter 5: Dictionaries and Mathematical Sets</h2>
+                <p class="book-text">Dictionary Key-Value pair par chalti hai jo indexing ko tezi se trace karti hai. Sets unindexed aur unique elements ka collection hote hain.</p>
+                <div class="code-box">
+                    data_dict = {<span class="c-str">"name"</span>: <span class="c-str">"Hamraz"</span>, <span class="c-str">"age"</span>: <span class="c-num">17</span>}<br>
+                    <span class="c-fn">print</span>(data_dict[<span class="c-str">"name"</span>])<br><br>
+                    node_set = {<span class="c-num">1</span>, <span class="c-num">2</span>, <span class="c-num">2</span>, <span class="c-num">3</span>} <span class="c-cm"># Stores only {1, 2, 3}</span>
+                </div>
+            </div>
+
+            <div id="ch-6" class="chapter-content">
+                <h2 class="section-heading">Chapter 6: Conditional Branch Loops (If-Elif-Else)</h2>
+                <p class="book-text">Conditionals system decision logic ko perform karte hain. Python iske liye strict blank indentation blocks ka istemal karta hai.</p>
+                <div class="code-box">
+                    age = <span class="c-num">17</span><br>
+                    <span class="c-kw">if</span> age &gt;= <span class="c-num">18</span>:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-fn">print</span>(<span class="c-str">"Standard Access"</span>)<br>
+                    <span class="c-kw">elif</span> age == <span class="c-num">17</span>:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-fn">print</span>(<span class="c-str">"Founder Hamraz Authorization Cleared"</span>)<br>
+                    <span class="c-kw">else</span>:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-fn">print</span>(<span class="c-str">"Denial Logic"</span>)
+                </div>
+            </div>
+
+            <div id="ch-7" class="chapter-content">
+                <h2 class="section-heading">Chapter 7: Iteration Control Blocks (While and For Loops)</h2>
+                <p class="book-text">Loops repetitive calculations ko sambhalti hain taaki code bar-bar na likhna pade.</p>
+                <div class="code-box">
+                    <span class="c-kw">for</span> item <span class="c-kw">in</span> <span class="c-fn">range</span>(<span class="c-num">1</span>, <span class="c-num">4</span>):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-fn">print</span>(f<span class="c-str">"Sequence: {item}"</span>)
+                </div>
+            </div>
+
+            <div id="ch-8" class="chapter-content">
+                <h2 class="section-heading">Chapter 8: Modular Functions & Explicit Arguments</h2>
+                <p class="book-text">Functions reusable logic patterns hote hain jo deep program scaling mein complexity ko kam karte hain.</p>
+                <div class="code-box">
+                    <span class="c-kw">def</span> <span class="c-fn">initialize_hub</span>(founder):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-kw">return</span> f<span class="c-str">"Matrix operational under {founder}"</span><br><br>
+                    status = initialize_hub(<span class="c-str">"Hamraz Tariq"</span>)
+                </div>
+            </div>
+
+            <div id="ch-9" class="chapter-content">
+                <h2 class="section-heading">Chapter 9: Persistent Storage and File I/O Mechanics</h2>
+                <p class="book-text">File handling se code system external text documents ko safely write aur read kar sakta hai.</p>
+                <div class="code-box">
+                    <span class="c-kw">with</span> <span class="c-fn">open</span>(<span class="c-str">"database.txt"</span>, <span class="c-str">"w"</span>) <span class="c-kw">as</span> file:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;file.write(<span class="c-str">"Hamraz Code Hub Core Active"</span>)
+                </div>
+            </div>
+
+            <div id="ch-10" class="chapter-content">
+                <h2 class="section-heading">Chapter 10: Object-Oriented Programming (OOP) Core</h2>
+                <p class="book-text">OOP enterprise application scale ko build karne ki baseline hai. Classes custom application structure tayyar karti hain.</p>
+                <div class="code-box">
+                    <span class="c-kw">class</span> <span class="c-fn">DeveloperProfile</span>:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-kw">def</span> <span class="c-fn">__init__</span>(self, name):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.name = name<br><br>
+                    dev_obj = DeveloperProfile(<span class="c-str">"Hamraz"</span>)
+                </div>
+            </div>
+
+            <div id="ch-11" class="chapter-content">
+                <h2 class="section-heading">Chapter 11: Class Inheritance and Overriding</h2>
+                <p class="book-text">Inheritance se child class, parent class ki specifications aur logic blocks ko directly gain kar sakti hai.</p>
+                <div class="code-box">
+                    <span class="c-kw">class</span> <span class="c-fn">ParentSystem</span>:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;core_type = <span class="c-str">"Linux Engine"</span><br><br>
+                    <span class="c-kw">class</span> <span class="c-fn">ChildNetwork</span>(ParentSystem):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;proxy_enabled = <span class="c-kw">True</span>
+                </div>
+            </div>
+
+            <div id="ch-12" class="chapter-content">
+                <h2 class="section-heading">Chapter 12: List Comprehensions & Advanced Lambda Functions</h2>
+                <p class="book-text">Advanced concepts code lines ko behtar aur chota karte hain, jisse execution speed badh jaati hai.</p>
+                <div class="code-box">
+                    squares = [x**<span class="c-num">2</span> <span class="c-kw">for</span> x <span class="c-kw">in</span> <span class="c-fn">range</span>(<span class="c-num">5</span>)]<br>
+                    quick_lambda = <span class="c-kw">lambda</span> dynamic_val : dynamic_val * <span class="c-num">5</span>
+                </div>
+            </div>
+
+            <div id="ch-13" class="chapter-content">
+                <h2 class="section-heading">Chapter 13: Exception Architecture (Try, Except, Finally)</h2>
+                <p class="book-text">Error handling runtime failures ko crash hone se rokti hai aur systems ko back-up layers deti hai.</p>
+                <div class="code-box">
+                    <span class="c-kw">try</span>:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;calc = <span class="c-num">10</span> / <span class="c-num">0</span><br>
+                    <span class="c-kw">except</span> ZeroDivisionError:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-fn">print</span>(<span class="c-str">"Mathematical Exception Handled Cleanly"</span>)
+                </div>
+            </div>
+
+            <div id="ch-14" class="chapter-content">
+                <h2 class="section-heading">Chapter 14: Capstone Automation Framework Project</h2>
+                <p class="book-text">Yahan tak aapne Python ke saare concepts seekh liye hain. Ab inka use karke ek auto log cleaner script system design kijiye.</p>
+                <div class="code-box">
+                    <span class="c-kw">import</span> sys<br>
+                    <span class="c-fn">print</span>(<span class="c-str">"Hamraz Code Hub Project Engine Validated."</span>)
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        function switchChapter(chapIdx) {
+            document.querySelectorAll('.chapter-content').forEach(content => content.classList.remove('active'));
+            document.querySelectorAll('.chap-link').forEach(link => link.classList.remove('active'));
+            
+            document.getElementById(`ch-${chapIdx}`).classList.add('active');
+            event.target.classList.add('active');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
