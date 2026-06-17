@@ -104,3 +104,111 @@
         cowsay.cow(selected_quote)
     </div>
 </div>
+
+            <div id="ch-2" class="chapter-content">
+                <h2 class="section-heading">Chapter 2: Variables and Core Dynamic Data Types (Complete Deep Dive)</h2>
+                <p class="book-text">Variables programming architecture ke sabse mahatvapurna block hain. Computer ke andarz ek physical storage memory address (RAM) hota hai. Ek software engineer RAM ke un complex binary addresses ko yaad nahi rakh sakta, isliye hum un memory locations ko ek unique alphanumeric name de dete hain, jise <strong>Variable</strong> kehte hain. Variable programming execution pipeline ke run-time ke dauran kisi bhi data payload ya values ko temporary register hold karke rakhta hai.</p>
+                
+                <div class="important-box">
+                    <strong>⚠️ Core Architecture Rule:</strong> Variables constant nahi hote; inki values execution ke dauran kisi bhi time badli (mutate) ja sakta hain, isiliye inhe 'Variable' (badalne wala) kaha jata hai.
+                </div>
+
+                <h3 class="sub-heading">2.1 Python Dynamic Typing & Memory Allocation Mechanics</h3>
+                <p class="book-text">Baki static programming languages (jaise C++, Java, ya C#) ki tarah Python mein variable initialize karte waqt uski data type pehle se declare nahi karni padti (e.g., <code>int price = 400;</code> nahi likhna padta). Python ka internal execution engine runtime par variable ke andarz save data ke signature aur configuration ko automatically analyze karta hai, aur real-time mein use specific data type address memory logic assign kar deta hai. Is power feature ko **Dynamic Typing** kehte hain.</p>
+                
+                <h3 class="sub-heading">2.2 Primitive and Advanced Data Types Taxonomy</h3>
+                <p class="book-text">Python standard data architecture variables default roop se in data parameters par directly map hoten hain:</p>
+                <ul class="content-list">
+                    <li><strong>Integers (<code>int</code>):</strong> Yeh bina kisi precision matrix ya decimal points ke pure numbers hote hain. Inme positive aur negative dono ranges aati hain. Jaise: <code>a = 45</code>, <code>b = -8921</code>, <code>c = 0</code>.</li>
+                    <li><strong>Floating Point Values (<code>float</code>):</strong> Precision mapping numbers jisme data structural values mathematical decimals holding arrays ke sath dynamic perform hoti hain. Jaise: <code>pi = 3.14159</code>, <code>gravity = -9.8</code>.</li>
+                    <li><strong>Strings (<code>str</code>):</strong> Characters ka ordered sequence vector jo single quotes (<code>'</code>), double quotes (<code>"</code>), ya triple quotes (<code>"""</code>) ke andarz variable blocks hold karte hain. Jaise: <code>name = "Hamraz Tariq"</code>.</li>
+                    <li><strong>Booleans (<code>bool</code>):</strong> System logical conditional status switches jo program control flow ko evaluate karne ke liye sirf do absolute states use karte hain: <code>True</code> aur <code>False</code>.</li>
+                    <li><strong>None Type:</strong> Variable initialization authentication step validation condition jahan memory register placeholder create ho jata hai par uske andarz koi concrete value assign nahi hoti: <code>state = None</code>.</li>
+                </ul>
+
+                <h3 class="sub-heading">2.3 Rules for Constructing Valid Identifiers (Variables)</h3>
+                <p class="book-text">Python variables name conventions core strict rules guidelines ko bind karte hain:</p>
+                <ul class="content-list">
+                    <li>Variable identifier name strictly kisi alphabet letter (A-Z, a-z) ya fir underscore (<code>_</code>) symbol character se hi start hona chahiye.</li>
+                    <li>Variable name ka pehla character kabhi bhi koi numeric digit integer (0-9) nahi ho sakta. (e.g., <code>101nodes</code> error dega, par <code>nodes101</code> perfect chalega).</li>
+                    <li>Variable ke beech mein space blank block restricted hai, space ki jagah hum underscore (<code>_</code>) se system word spacing structuralize karte hain (e.g., <code>core_server_ip</code>).</li>
+                    <li>Python character layout variables completely case-sensitive parameters check karte hain. Iska matlab <code>system_load</code> aur <code>SYSTEM_LOAD</code> dono alag memory references registers locations represent karenge.</li>
+                </ul>
+
+                <h2 class="section-heading">Chapter 2 Deep Practical Implementation Examples</h2>
+                <p class="book-text">Neeche diye gaye practical blueprints system analytics ko properly check kijiye:</p>
+
+                <p class="book-text"><strong>Example 1: Dynamic Data Variable Multi-Type Allocations & Type Discovery</strong></p>
+                <div class="code-box">
+                    server_node_count = <span class="c-num">250</span><br>
+                    load_balancing_factor = <span class="c-num">88.914</span><br>
+                    cluster_identifier_tag = <span class="c-str">"Hamraz-CodeHub-Mainframe-Alpha"</span><br>
+                    encryption_active_flag = <span class="c-kw">False</span><br>
+                    backup_node_address = <span class="c-kw">None</span><br><br>
+                    <span class="c-cm"># Discovering dynamic runtime classes signatures types metadata strings</span><br>
+                    <span class="c-fn">print</span>(<span class="c-str">"--- RUNTIME VARIABLE METADATA ANALYSIS ---"</span>)<br>
+                    <span class="c-fn">print</span>(<span class="c-str">"server_node_count class metadata:"</span>, <span class="c-fn">type</span>(server_node_count))<br>
+                    <span class="c-fn">print</span>(<span class="c-str">"cluster_identifier_tag class metadata:"</span>, <span class="c-fn">type</span>(cluster_identifier_tag))<br>
+                    <span class="c-fn">print</span>(<span class="c-str">"encryption_active_flag class metadata:"</span>, <span class="c-fn">type</span>(encryption_active_flag))
+                </div>
+
+                <p class="book-text"><strong>Example 2: Explicit Data Typecasting Transformation Engine System</strong></p>
+                <div class="code-box">
+                    <span class="c-cm"># Converting alpha data type string digits into computational integer memory models</span><br>
+                    raw_string_metric = <span class="c-str">"8500"</span><br>
+                    <span class="c-cm"># Explicit Typecasting syntax</span><br>
+                    cast_integer_value = <span class="c-fn">int</span>(raw_string_metric)<br><br>
+                    system_offset_multiplier = <span class="c-num">150</span><br>
+                    total_aggregated_sum = cast_integer_value <span class="c-op">+</span> system_offset_multiplier<br><br>
+                    <span class="c-fn">print</span>(<span class="c-str">"--- EXPLICIT DATA TYPECASTING ENGINE PIPELINE ---"</span>)<br>
+                    <span class="c-fn">print</span>(<span class="c-str">"Original input data was string, computed post conversion sum:"</span>, total_aggregated_sum)<br>
+                    <span class="c-fn">print</span>(<span class="c-str">"Casting integer to float value notation format:"</span>, <span class="c-fn">float</span>(<span class="c-num">45</span>))
+                </div>
+
+                <p class="book-text"><strong>Example 3: Mathematical Multi-Assignment Array Routing Manipulation</strong></p>
+                <div class="code-box">
+                    <span class="c-cm"># Initializing multi assignments tracking properties in single pipeline flow layout</span><br>
+                    node_x = node_y = node_z = <span class="c-num">9999</span><br>
+                    <span class="c-fn">print</span>(<span class="c-str">"Node X allocation status:"</span>, node_x)<br><br>
+                    <span class="c-cm"># Swapping variables values safely without third-party pointer allocation variables</span><br>
+                    register_alpha = <span class="c-num">10</span><br>
+                    register_beta = <span class="c-num">88</span><br>
+                    register_alpha, register_beta = register_beta, register_alpha <span class="c-cm"># Dynamic Pythonic packing swap</span><br><br>
+                    <span class="c-fn">print</span>(<span class="c-str">"Post dynamic swap process register_alpha value:"</span>, register_alpha) <span class="c-cm"># Outputs 88</span>
+                </div>
+
+                <p class="book-text"><strong>Example 4: Enterprise Hardware Core Input Parameter Variable Intercept Shell</strong></p>
+                <div class="code-box">
+                    <span class="c-fn">print</span>(<span class="c-str">"==========================================================="</span>)<br>
+                    <span class="c-fn">print</span>(<span class="c-str">"HAMRAZ CORE ENTERPRISE NODE PARAMETER USER INTERCEPT MATRIX"</span>)<br>
+                    <span class="c-fn">print</span>(<span class="c-str">"==========================================================="</span>)<br><br>
+                    user_node_name = <span class="c-fn">input</span>(<span class="c-str">"Deploy/Enter target engineer node authorization name: "</span>)<br>
+                    allocation_cluster_cores = <span class="c-fn">int</span>(<span class="c-fn">input</span>(<span class="c-str">"Specify hardware computation load processor cores count: "</span>))<br><br>
+                    <span class="c-fn">print</span>(f<span class="c-str">"\n[SUCCESS] Node target linked safely to authorization block id: {user_node_name}"</span>)<br>
+                    <span class="c-fn">print</span>(f<span class="c-str">"Total system calculation power configured: {allocation_cluster_cores * 4} GHz total matrix tracking."</span>)
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        function switchChapter(chapIdx) {
+            document.querySelectorAll('.chapter-content').forEach(content => content.classList.remove('active'));
+            document.querySelectorAll('.chap-link').forEach(link => link.classList.remove('active'));
+            
+            const targetContent = document.getElementById(`ch-${chapIdx}`);
+            if(targetContent) {
+                targetContent.classList.add('active');
+            } else {
+                alert("Chapter data module loading in next partition step...");
+            }
+            
+            const selectedButtonElement = document.querySelectorAll('.chap-link')[chapIdx - 1];
+            if(selectedButtonElement) selectedButtonElement.classList.add('active');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
