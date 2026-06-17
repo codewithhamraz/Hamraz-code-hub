@@ -36,7 +36,13 @@
         }
         .back-btn:hover { background: #00ff66; color: #02050a; box-shadow: 0 0 15px #00ff66; }
 
-        main { margin-top: 100px; display: grid; grid-template-columns: 300px 1fr; min-height: calc(100vh - 100px); }
+        /* Main Structural Grid */
+        main { 
+            margin-top: 100px; 
+            display: grid; 
+            grid-template-columns: 300px 1fr; 
+            min-height: calc(100vh - 100px); 
+        }
 
         .sidebar {
             background: #04080f; border-right: 1px solid rgba(255,255,255,0.05);
@@ -45,10 +51,12 @@
 
         .sidebar h3 { color: #00ff66; font-size: 1.1rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
         .chapter-links { display: flex; flex-direction: column; gap: 8px; }
+        
         .chap-link {
             background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
             color: #8b949e; padding: 12px 15px; border-radius: 8px; text-align: left;
             cursor: pointer; font-size: 0.95rem; font-weight: 600; transition: all 0.2s;
+            width: 100%;
         }
         .chap-link:hover, .chap-link.active {
             background: rgba(0, 255, 102, 0.08); color: #ffffff; border-color: #00ff66;
@@ -78,13 +86,39 @@
         .c-num { color: #f0883e; }
 
         .info-box { background: rgba(0, 255, 102, 0.02); border-left: 4px solid #00ff66; padding: 15px 20px; margin: 25px 0; border-radius: 0 8px 8px 0; }
+
+        /* 📱 RESPONSIVE MEDIA QUERIES FOR MOBILE DEVICES */
+        @media (max-width: 768px) {
+            main {
+                display: flex;
+                flex-direction: column;
+                margin-top: 80px;
+            }
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                max-height: 250px;
+                border-right: none;
+                border-bottom: 1px solid rgba(0, 255, 102, 0.15);
+                overflow-y: auto;
+                margin-bottom: 20px;
+            }
+            .content-pane {
+                margin-left: 0;
+                padding: 20px;
+            }
+            .book-title {
+                font-size: 1.8rem;
+            }
+        }
     </style>
 </head>
 <body>
 
     <header>
         <a href="index.html" class="logo">Hamraz <span>Code Hub</span></a>
-        <a href="index.html" class="back-btn">🏠 Back to Main Matrix</a>
+        <a href="index.html" class="back-btn">🏠 Back</a>
     </header>
 
     <main>
@@ -270,7 +304,10 @@
             document.querySelectorAll('.chap-link').forEach(link => link.classList.remove('active'));
             
             document.getElementById(`ch-${chapIdx}`).classList.add('active');
-            event.target.classList.add('active');
+            
+            // Highlight current button responsively
+            const activeBtn = document.querySelectorAll('.chap-link')[chapIdx - 1];
+            if(activeBtn) activeBtn.classList.add('active');
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
