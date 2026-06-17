@@ -1,412 +1,106 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Full Core Matrix Handbook | Hamraz Code Hub</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Space+Grotesk:wght@400;600;700&display=swap');
+<div id="ch-1" class="chapter-content active">
+    <h2 class="section-heading">Chapter 1: Modules, Comments, and PIP Frameworks (Complete Industrial Guide)</h2>
+    <p class="book-text">Python ek high-level, interpreted, aur object-oriented programming language hai jise Guido van Rossum ne 1989 mein devlop kiya tha aur officially 1991 mein release kiya gaya tha. Iska main vision tha code ki readability ko badhana aur kam se kam lines mein bada aur scalable enterprise software taiyar karna. Aaj ke samay mein Python Artificial Intelligence, Data Science, Web Development (Django/Flask), Automation, aur Cyber Security mein poori duniya ki sabse pehli pasand bani hui hai.</p>
+    
+    <div class="info-box">
+        <strong>💡 Key Architectural Fact:</strong> Python ek interpreted language hai, iska matlab hai ki iska code line-by-line execute hota hai, jisse debugging process bohot fast aur efficient ho jati hai.
+    </div>
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            background-color: #02050a; color: #d1d9e0;
-            font-family: 'Space Grotesk', sans-serif; min-height: 100vh;
-            overflow-x: hidden;
-        }
+    <h3 class="sub-heading">1.1 What is a Module? (The Reusability Nodes)</h3>
+    <p class="book-text">Jab hamara program bada aur complex ho jata hai, toh pure code ko ek hi script file mein rakhna lagbhag impossible aur unmaintainable ho jata hai. Is problem ko solve karne ke liye hum modules ka use karte hain. Ek module ek aisi file hoti hai jisme pehle se likha hua Python code (functions, classes, variables) hota hai, jise hum apni kisi bhi nayi file mein <code>import</code> keyword ka use karke direct reuse kar sakte hain. Modules do prakar ke hote hain:</p>
+    
+    <ul class="content-list">
+        <li><strong>1. Built-in Modules (Standard Libraries):</strong> Yeh Python installation ke sath system mein pehle se auto-configure hokar aate hain. Inhe chalane ke liye internet ya kisi external download ki zaroorat nahi hoti. Jaise ki:
+            <ul>
+                <li><code>os</code>: Operating system ke directory aur files se interact karne ke liye.</li>
+                <li><code>math</code>: Complex mathematical calculations aur trigonometry operations ke liye.</li>
+                <li><code>random</code>: Cryptographic aur pseudo-random numbers generate karne ke liye.</li>
+                <li><code>sys</code>: Python runtime environment aur system-specific parameters ko control karne ke liye.</li>
+            </ul>
+        </li>
+        <li><strong>2. External Modules (Third-Party Libraries):</strong> Yeh modules Python standard community ke developers ne banaye hain aur yeh open-source internet repositories par available hote hain. Inhe pehle PIP ke zaroorat se download karna padta hai. Jaise:
+            <ul>
+                <li><code>pandas</code> aur <code>numpy</code>: Heavy data science aur matrix mathematical calculations ke liye.</li>
+                <li><code>django</code> aur <code>flask</code>: Enterprise web back-end architectures build karne ke liye.</li>
+                <li><code>cowsay</code>: Terminal automation aur visual text manipulation ke liye.</li>
+            </ul>
+        </li>
+    </ul>
 
-        /* Neon Laser Edge Element */
-        body::before {
-            content: ''; position: fixed; top: 0; left: 0; width: 4px; height: 100%;
-            background: linear-gradient(to bottom, transparent, #00ff66, transparent);
-            box-shadow: 0 0 15px #00ff66; z-index: 1000;
-        }
+    <h3 class="sub-heading">1.2 PIP: Python Package Manager Engine</h3>
+    <p class="book-text">PIP ka full form hai <strong>"Pip Installs Packages"</strong>. Yeh Python ka ek official command-line package management tool hai. Iska kaam internet par bane sabse bade open-source Python repository <strong>PyPI (Python Package Index)</strong> se connect hokar kisi bhi external package ko aapke local computer ya server par automatic download, install, aur configure karna hota hai.</p>
+    
+    <p class="book-text"><strong>Important Terminal Commands for PIP Architecture:</strong></p>
+    <div class="code-box">
+        <span class="c-cm"># Installing any external third-party module globally</span><br>
+        pip install package_name<br><br>
+        <span class="c-cm"># Uninstalling an existing package from the system environment</span><br>
+        pip uninstall package_name<br><br>
+        <span class="c-cm"># Listing all installed packages along with their exact versions</span><br>
+        pip list
+    </div>
 
-        /* Navigation Node */
-        header {
-            width: 100%; padding: 20px 6%; background: rgba(2, 5, 10, 0.95);
-            backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0, 255, 102, 0.2);
-            display: flex; justify-content: space-between; align-items: center;
-            position: fixed; top: 0; left: 0; z-index: 999;
-        }
+    <h3 class="sub-heading">1.3 Comments and Documentation Strings (Docstrings)</h3>
+    <p class="book-text">Comments source code ke andarz likhe gaye engineer ke personal notes hote hain. Jab Python ka interpreter program ko chala raha hota hai, toh voh comments vaali lines ko poori tarah se ignore (bypass) kar deta hai. Comments ka use code ke logic ko asan bhasha mein samjhane aur bade software teams ke beech coordination banane ke liye kiya jata hai.</p>
+    
+    <ul class="content-list">
+        <li><strong>Single-line Comments:</strong> Yeh comments sirf ek single line ke hote hain aur inki shuruat hamesha <code>#</code> (hash) character se hoti hai.</li>
+        <li><strong>Multi-line Comments / Docstrings:</strong> Jab hume bade algorithms ya poore software architecture ka description likhna hota hai, toh hum triple quotes <code>"""</code> ya <code>'''</code> ka use karte hain. Inhe formal taur par documentation strings bhi kaha jata hai.</li>
+    </ul>
 
-        .logo { font-size: 1.8rem; font-weight: 700; color: #ffffff; text-decoration: none; }
-        .logo span { color: #00ff66; text-shadow: 0 0 15px rgba(0, 255, 102, 0.5); }
+    <h2 class="section-heading">Chapter 1 Deep Practical Implementation Examples</h2>
+    <p class="book-text">Neeche diye gaye saare examples real-world industry code ke mutabik design kiye gaye hain jinme proper syntax coloring lagayi gayi hai:</p>
 
-        .back-btn {
-            background: rgba(0, 255, 102, 0.08); border: 1px solid #00ff66;
-            color: #00ff66; padding: 8px 18px; border-radius: 8px;
-            font-weight: 600; text-decoration: none; transition: all 0.2s;
-        }
-        .back-btn:hover { background: #00ff66; color: #02050a; box-shadow: 0 0 15px #00ff66; }
+    <p class="book-text"><strong>Example 1: Deep Interaction with System OS Core via Built-in Module</strong></p>
+    <div class="code-box">
+        <span class="c-kw">import</span> os <span class="c-cm"># In-built platform module injection</span><br>
+        <span class="c-kw">import</span> sys<br><br>
+        <span class="c-cm"># Step 1: Track and extract the current project working directory path</span><br>
+        current_working_directory = os.getcwd()<br>
+        <span class="c-fn">print</span>(<span class="c-str">"--- HARDWARE SYSTEM REPOSITORY LOG ---"</span>)<br>
+        <span class="c-fn">print</span>(<span class="c-str">"Active Execution Directory Path:"</span>, current_working_directory)<br><br>
+        <span class="c-cm"># Step 2: Fetching the active operating system platform and python version</span><br>
+        system_platform = sys.platform<br>
+        python_version_node = sys.version<br>
+        <span class="c-fn">print</span>(f<span class="c-str">"OS Platform Type: {system_platform}"</span>)<br>
+        <span class="c-fn">print</span>(f<span class="c-str">"Runtime Python Version Node: {python_version_node}"</span>)
+    </div>
 
-        /* Structural Split Layout */
-        main { 
-            margin-top: 95px; 
-            display: grid; 
-            grid-template-columns: 340px 1fr; 
-            min-height: calc(100vh - 95px); 
-        }
+    <p class="book-text"><strong>Example 2: Advanced Math Calculations Using Built-in Math Engine</strong></p>
+    <div class="code-box">
+        <span class="c-kw">import</span> math <span class="c-cm"># Importing mathematical processing engine</span><br><br>
+        <span class="c-cm"># Defining mathematical constant parameters and calculation metrics</span><br>
+        radius_value = <span class="c-num">14.5</span><br>
+        calculated_area = math.pi <span class="c-op">*</span> math.pow(radius_value, <span class="c-num">2</span>)<br><br>
+        <span class="c-fn">print</span>(<span class="c-str">"--- PRECISION MATHEMATICAL ENGINE OUTPUT ---"</span>)<br>
+        <span class="c-fn">print</span>(<span class="c-str">"Pi Value up to maximum precision limits:"</span>, math.pi)<br>
+        <span class="c-fn">print</span>(f<span class="c-str">"Calculated Area of the tracking surface matrix: {calculated_area:.4f}"</span>)<br>
+        <span class="c-fn">print</span>(<span class="c-str">"Square Root evaluation of 625 is:"</span>, math.sqrt(<span class="c-num">625</span>))
+    </div>
 
-        /* Sidebar Control Center */
-        .sidebar {
-            background: #04080f; border-right: 1px solid rgba(0, 255, 102, 0.1);
-            padding: 25px; position: fixed; width: 340px; height: calc(100vh - 95px); overflow-y: auto;
-        }
+    <p class="book-text"><strong>Example 3: Multi-line Docstring Documentation and Comment Node Mapping</strong></p>
+    <div class="code-box">
+        <span class="c-str">"""<br>===========================================================<br>SYSTEM BLUEPRINT MODULE: CORE CALCULATOR LOADER ENGINE<br>Author: Architect Hamraz Tariq<br>Version: 4.0.1 Enterprise Standard<br>===========================================================<br>"""</span><br><br>
+        <span class="c-kw">def</span> <span class="c-fn">execute_system_multiplication</span>(factor_a, factor_b):<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-str">"""<br>&nbsp;&nbsp;&nbsp;&nbsp;This internal function computes the strict product parameters<br>&nbsp;&nbsp;&nbsp;&nbsp;of two heavy floating data streams.<br>&nbsp;&nbsp;&nbsp;&nbsp;"""</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;computed_product = factor_a <span class="c-op">*</span> factor_b <span class="c-cm"># Single line math verification process</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-kw">return</span> computed_product<br><br>
+        result_payload = execute_system_multiplication(<span class="c-num">45.25</span>, <span class="c-num">12.80</span>)<br>
+        <span class="c-fn">print</span>(<span class="c-str">"Calculated Multiplier Flow Result:"</span>, result_payload)
+    </div>
 
-        .sidebar h3 { color: #00ff66; font-size: 1.1rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
-        .chapter-links { display: flex; flex-direction: column; gap: 8px; }
-        
-        .chap-link {
-            background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.05);
-            color: #8b949e; padding: 14px 15px; border-radius: 8px; text-align: left;
-            cursor: pointer; font-size: 0.95rem; font-weight: 600; transition: all 0.2s;
-            width: 100%; display: block; line-height: 1.4;
-        }
-        .chap-link:hover, .chap-link.active {
-            background: rgba(0, 255, 102, 0.08); color: #ffffff; border-color: #00ff66;
-            box-shadow: 0 0 10px rgba(0, 255, 102, 0.1);
-        }
-
-        /* Documentation Display Board */
-        .content-pane { margin-left: 340px; padding: 50px 5%; overflow-y: auto; }
-        .book-title { color: #00ff66; font-size: 2.6rem; font-weight: 700; margin-bottom: 5px; text-shadow: 0 0 20px rgba(0,255,102,0.2); }
-        .book-subtitle { color: #8b949e; font-size: 1.1rem; margin-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 20px; }
-        
-        .chapter-content { display: none; }
-        .chapter-content.active { display: block; animation: MatrixFadeIn 0.4s ease; }
-
-        @keyframes MatrixFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Typography & Custom Coloring Rules */
-        .section-heading { color: #ffffff; font-size: 1.7rem; margin: 35px 0 18px 0; padding-left: 14px; border-left: 4px solid #00ff66; }
-        .sub-heading { color: #00ff66; font-size: 1.3rem; margin: 25px 0 12px 0; font-weight: 600; }
-        .book-text { color: #c9d1d9; font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px; text-align: justify; }
-        
-        /* Premium Native Code Dark Editor Box */
-        .code-box {
-            background: #010409; border: 1px solid rgba(0, 255, 102, 0.2);
-            border-radius: 12px; padding: 22px; margin: 22px 0;
-            font-family: 'Fira Code', monospace; font-size: 0.98rem; line-height: 1.6; overflow-x: auto;
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.6);
-        }
-
-        /* Code Token Color Highlighters */
-        .c-kw { color: #ff7b72; font-weight: bold; } /* Keywords: def, class, if, return, import */
-        .c-str { color: #a5d6ff; }                  /* Strings: "data structure", text elements */
-        .c-fn { color: #d2a8ff; }                  /* Functions: print, int, type, len */
-        .c-cm { color: #768390; font-style: italic; } /* Comments: # structural definitions */
-        .c-num { color: #f0883e; font-weight: 500; }  /* Integers/Numbers: 45, 100, 0 */
-        .c-op { color: #ff7b72; }                  /* Operators: +, -, ==, and, or */
-
-        /* Visual Alert Nodes */
-        .info-box { background: rgba(0, 255, 102, 0.02); border-left: 4px solid #00ff66; padding: 18px 22px; margin: 25px 0; border-radius: 0 10px 10px 0; }
-        .important-box { background: rgba(255, 123, 114, 0.02); border-left: 4px solid #ff7b72; padding: 18px 22px; margin: 25px 0; border-radius: 0 10px 10px 0; }
-        
-        ul.content-list { margin-left: 25px; margin-bottom: 25px; color: #c9d1d9; font-size: 1.1rem; line-height: 1.8; }
-        ul.content-list li { margin-bottom: 10px; }
-        ul.content-list strong { color: #ffffff; }
-
-        /* 📱 RESPONSIVE ADAPTATION MEDIA LAYER FOR MOBILE SCREEN CORES */
-        @media (max-width: 992px) {
-            main { display: flex; flex-direction: column; margin-top: 80px; }
-            .sidebar { position: relative; width: 100%; height: auto; max-height: 280px; border-right: none; border-bottom: 1px solid rgba(0, 255, 102, 0.15); overflow-y: auto; margin-bottom: 15px; padding: 15px; }
-            .content-pane { margin-left: 0; padding: 25px 15px; }
-            .book-title { font-size: 1.9rem; }
-            .section-heading { font-size: 1.4rem; }
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <a href="index.html" class="logo">Hamraz <span>Code Hub</span></a>
-        <a href="index.html" class="back-btn">🏠 Back To Core Matrix</a>
-    </header>
-
-    <main>
-        <div class="sidebar">
-            <h3>Course Blueprint Matrix</h3>
-            <div class="chapter-links">
-                <button class="chap-link active" onclick="switchChapter(1)">Ch 1: Modules, Comments & PIP</button>
-                <button class="chap-link" onclick="switchChapter(2)">Ch 2: Variables & Data Types</button>
-                <button class="chap-link" onclick="switchChapter(3)">Ch 3: Strings & Slicing Core</button>
-                <button class="chap-link" onclick="switchChapter(4)">Ch 4: Lists & Tuples Engine</button>
-                <button class="chap-link" onclick="switchChapter(5)">Ch 5: Dictionaries & Sets Models</button>
-                <button class="chap-link" onclick="switchChapter(6)">Ch 6: Conditional Branch Logical</button>
-                <button class="chap-link" onclick="switchChapter(7)">Ch 7: Loops Iteration Framework</button>
-                <button class="chap-link" onclick="switchChapter(8)">Ch 8: Functions & Recursions</button>
-                <button class="chap-link" onclick="switchChapter(9)">Ch 9: File System Storage Input/Output</button>
-                <button class="chap-link" onclick="switchChapter(10)">Ch 10: OOP Architecture Concepts</button>
-                <button class="chap-link" onclick="switchChapter(11)">Ch 11: Class Inheritance & Overrides</button>
-                <button class="chap-link" onclick="switchChapter(12)">Ch 12: Advanced Engine Blueprint 1</button>
-                <button class="chap-link" onclick="switchChapter(13)">Ch 13: Advanced Engine Blueprint 2</button>
-                <button class="chap-link" onclick="switchChapter(14)">Ch 14: Capstone Automation Project</button>
-            </div>
-        </div>
-
-        <div class="content-pane">
-            <h1 class="book-title">Python Multi-Chapter Matrix</h1>
-            <div class="book-subtitle">Absolute Industrial Level Production Blueprint Handbooks Engine by Architect Hamraz Tariq</div>
-
-            <div id="ch-1" class="chapter-content active">
-                <h2 class="section-heading">Chapter 1: Modules, Comments, and PIP Frameworks In-Depth</h2>
-                <p class="book-text">Python ek highly scalable, human-readable, interpreted programming language hai jo advanced computing environments ke liye ideal hai. Is platform par clean code structure sabse important parameter hai.</p>
-                
-                <h3 class="sub-heading">1.1 Deep Module Taxonomy</h3>
-                <p class="book-text">Modules modularity enforce karte hain. Yeh pre-written reusable logic systems hote hain jinhe system infrastructure mein easily implement kiya ja sakta hai:</p>
-                <ul class="content-list">
-                    <li><strong>Built-in Modules:</strong> Python installation layer ke sath pre-bundled aate hain (e.g., `os`, `sys`, `math`, `random`).</li>
-                    <li><strong>External Modules:</strong> Third-party code clusters hote hain jinhe external pipelines se deploy karna padta hai (e.g., `flask`, `django`, `pandas`, `numpy`).</li>
-                </ul>
-
-                <h3 class="sub-heading">1.2 PIP Node Architecture</h3>
-                <p class="book-text">PIP terminal toolkit computational packages ko network source registries se automatically analyze, verify aur cloud machines par install karta hai.</p>
-
-                <h3 class="sub-heading">1.3 Comments Compiling Execution Exclusions</h3>
-                <p class="book-text">Comments compilation streams se physically isolated hote hain taaki developer structural notes system par set kar sakein.</p>
-
-                <div class="code-box">
-                    <span class="c-kw">import</span> os <span class="c-cm"># Importing a built-in OS framework node</span><br>
-                    <span class="c-kw">import</span> random <span class="c-cm"># Standard math calculation generator</span><br><br>
-                    <span class="c-str">"""<br>Multi-line Structural Comments Block<br>Designed exclusively inside Hamraz Code Hub<br>"""</span><br>
-                    current_node_directory = os.getcwd()<br>
-                    <span class="c-fn">print</span>(f<span class="c-str">"Active Virtual Address Node: {current_node_directory}"</span>)
-                </div>
-            </div>
-
-            <div id="ch-2" class="chapter-content">
-                <h2 class="section-heading">Chapter 2: Variables and Core Dynamic Data Types</h2>
-                <p class="book-text">Variables dynamic computational environments ke registers ya temporary containers hote hain jo hardware scaling logic run karte waqt raw alphanumeric bytes parameters ko hold karte hain.</p>
-                
-                <h3 class="sub-heading">2.1 Core Primitive Types Matrix</h3>
-                <ul class="content-list">
-                    <li><strong>Int:</strong> Mathematical values without fractional nodes (e.g., `45`, `-10`).</li>
-                    <li><strong>Float:</strong> Precision metrics values holding fractional arrays (e.g., `90.412`, `-0.005`).</li>
-                    <li><strong>String:</strong> Characters collection wrap systems arrays (e.g., `"Hamraz"`).</li>
-                    <li><strong>Bool:</strong> Binary programmatic evaluation variables (`True` / `False`).</li>
-                </ul>
-
-                <div class="code-box">
-                    developer_identity = <span class="c-str">"Hamraz Tariq"</span> <span class="c-cm"># Dynamic allocations engine</span><br>
-                    cluster_node_id = <span class="c-num">8891</span><br>
-                    efficiency_multiplier = <span class="c-num">98.441</span><br>
-                    system_clearance_state = <span class="c-kw">True</span><br><br>
-                    <span class="c-fn">print</span>(<span class="c-fn">type</span>(developer_identity)) <span class="c-cm"># Outputs structural class details tracking info</span>
-                </div>
-            </div>
-
-            <div id="ch-3" class="chapter-content">
-                <h2 class="section-heading">Chapter 3: Deep String Structuring and Array Slicing Matrix</h2>
-                <p class="book-text">Strings character points sequences data mappings hold karti hain. Immutability standards memory structure blocks security integrity protect karte hain.</p>
-                
-                <h3 class="sub-heading">3.1 Slicing Expressions Engine Rules [Start : Stop : Step]</h3>
-                <div class="code-box">
-                    target_string = <span class="c-str">"HamrazCodeHub"</span><br>
-                    substring_alpha = target_string[<span class="c-num">0</span>:<span class="c-num">6</span>] <span class="c-cm"># Target slices matching: Hamraz</span><br>
-                    substring_beta = target_string[<span class="c-num">6</span>:] <span class="c-cm"># Target slices matching: CodeHub</span><br>
-                    negative_index_slice = target_string[-<span class="c-num">3</span>:] <span class="c-cm"># Target slices matching: Hub</span><br>
-                    skip_step_sequence = target_string[<span class="c-num">0</span>:<span class="c-num">12</span>:<span class="c-num">2</span>] <span class="c-cm"># Custom offsets hopping tracking lines arrays</span>
-                </div>
-            </div>
-
-            <div id="ch-4" class="chapter-content">
-                <h2 class="section-heading">Chapter 4: Lists & Ordered Tuple Performance Arrays</h2>
-                <p class="book-text">Lists mutable dynamic pipelines processing loops elements clusters manipulate karti hain. Tuples write-protected system records structural bounds parameters store karte hain.</p>
-                <div class="code-box">
-                    mutable_array_list = [<span class="c-str">"Node-0"</span>, <span class="c-num">9021</span>, <span class="c-kw">True</span>]<br>
-                    mutable_array_list[<span class="c-num">0</span>] = <span class="c-str">"Node-Override-Active"</span> <span class="c-cm"># Dynamic modification valid operation</span><br><br>
-                    static_immutable_tuple = (<span class="c-num">44.12</span>, <span class="c-num">10.02</span>, <span class="c-num">44.12</span>)<br>
-                    <span class="c-fn">print</span>(static_immutable_tuple.count(<span class="c-num">44.12</span>)) <span class="c-cm"># Computes structural occurrence limits matches</span>
-                </div>
-            </div>
-
-            <div id="ch-5" class="chapter-content">
-                <h2 class="section-heading">Chapter 5: Dictionaries and Mathematical Sets Architecture</h2>
-                <p class="book-text">Dictionaries hash maps index mechanisms processing systems optimize karti hain. Sets dynamic unique elements matrices ensure karti hain.</p>
-                <div class="code-box">
-                    data_schema_dictionary = {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-str">"cluster_domain"</span>: <span class="c-str">"codewithhamraz.github.io"</span>,<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-str">"operational_ports"</span>: [<span class="c-num">80</span>, <span class="c-num">443</span>]<br>
-                    }<br>
-                    <span class="c-fn">print</span>(data_schema_dictionary.get(<span class="c-str">"cluster_domain"</span>))<br><br>
-                    mathematical_unique_set = {<span class="c-num">10</span>, <span class="c-num">20</span>, <span class="c-num">20</span>, <span class="c-num">30</span>} <span class="c-cm"># Computes values strictly unique node to {10, 20, 30}</span>
-                </div>
-            </div>
-
-            <div id="ch-6" class="chapter-content">
-                <h2 class="section-heading">Chapter 6: Conditional Branch Logical Expressions</h2>
-                <p class="book-text">Logical blocks conditional flows mapping criteria setup system instructions control structures direct validation logic filters handle setup routines run models loops parameter mappings checks trace nodes.</p>
-                <div class="code-box">
-                    authorization_level = <span class="c-num">10</span><br>
-                    secure_token_flag = <span class="c-kw">True</span><br><br>
-                    <span class="c-kw">if</span> authorization_level &gt;= <span class="c-num">8</span> <span class="c-op">and</span> secure_token_flag == <span class="c-kw">True</span>:<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-fn">print</span>(<span class="c-str">"System Admin Credentials Validation Confirmed Layer-1 Access Cleared."</span>)<br>
-                    <span class="c-kw">elif</span> authorization_level &lt; <span class="c-num">8</span>:<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-fn">print</span>(<span class="c-str">"Low Clearance Client Profile Active. Standard Shell Environment Setup Load."</span>)<br>
-                    <span class="c-kw">else</span>:<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-fn">print</span>(<span class="c-str">"Intrusion Alert Exception Protocol Triggered."</span>)
-                </div>
-            </div>
-
-            <div id="ch-7" class="chapter-content">
-                <h2 class="section-heading">Chapter 7: Loops Iteration Framework</h2>
-                <p class="book-text">Loops repetitive calculations sequences automated execution paths control layers run algorithms architectures maps track layout systems nodes processes setups variables fields definitions updates.</p>
-                <div class="code-box">
-                    iteration_pointer = <span class="c-num">0</span><br>
-                    <span class="c-kw">while</span> iteration_pointer &lt; <span class="c-num">4</span>:<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-fn">print</span>(f<span class="c-str">"Active Stream Sequence Data Coordinate: {iteration_pointer}"</span>)<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;iteration_pointer += <span class="c-num">1</span><br><br>
-                    <span class="c-kw">for</span> target_index <span class="c-kw">in</span> <span class="c-fn">range</span>(<span class="c-num">0</span>, <span class="c-num">6</span>, <span class="c-num">2</span>):<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-fn">print</span>(f<span class="c-str">"For-Loop Hopping Offsets Position Address: {target_index}"</span>)
-                </div>
-            </div>
-
-            <div id="ch-8" class="chapter-content">
-                <h2 class="section-heading">Chapter 8: Functions & Recursions</h2>
-                <p class="book-text">Functions optimize logic architectures, minimize line redundancy parameters configurations execution models layers systems processing bounds logic mapping workflows definitions setup arrays.</p>
-                <div class="code-box">
-                    <span class="c-kw">def</span> <span class="c-fn">calculate_network_load_multiplier</span>(base_load, distribution_factor=<span class="c-num">2.5</span>):<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;computed_allocation_score = base_load * distribution_factor<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-kw">return</span> computed_allocation_score<br><br>
-                    <span class="c-kw">def</span> <span class="c-fn">execute_factorial_recursion</span>(value_node):<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-kw">if</span> value_node == <span class="c-num">1</span> <span class="c-op">or</span> value_node == <span class="c-num">0</span>:<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-kw">return</span> <span class="c-num">1</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-kw">return</span> value_node * execute_factorial_recursion(value_node - <span class="c-num">1</span>)<br><br>
-                    active_metrics_payload = calculate_network_load_multiplier(<span class="c-num">120.50</span>)<br>
-                    factorial_output_node = execute_factorial_recursion(<span class="c-num">5</span>)
-                </div>
-            </div>
-
-            <div id="ch-9" class="chapter-content">
-                <h2 class="section-heading">Chapter 9: File System Storage Input/Output Engine</h2>
-                <p class="book-text">File manipulation system pipelines dynamic logs serialization and persistent secondary hard drive architectures read write execute workflows controls layer checks definitions setups models logic arrays tracking layout pipelines clear traces variables configurations operations fields updates.</p>
-                <div class="code-box">
-                    <span class="c-cm"># Safe Automated Context Manager Execution System Node Block</span><br>
-                    <span class="c-kw">with</span> <span class="c-fn">open</span>(<span class="c-str">"cluster_logs.txt"</span>, <span class="c-str">"w"</span>) <span class="c-kw">as</span> active_file_stream:<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;active_file_stream.write(<span class="c-str">"System Engine State: 2026 Verification Sequences Secure Operational Pass Status Normal Layer Active Routing.\n"</span>)<br><br>
-                    <span class="c-kw">with</span> <span class="c-fn">open</span>(<span class="c-str">"cluster_logs.txt"</span>, <span class="c-str">"r"</span>) <span class="c-kw">as</span> historical_stream_reader:<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;payload_buffer_allocation = historical_stream_reader.read()<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-fn">print</span>(payload_buffer_allocation)
-                </div>
-            </div>
-
-            <div id="ch-10" class="chapter-content">
-                <h2 class="section-heading">Chapter 10: OOP Architecture Concepts</h2>
-                <p class="book-text">Object-Oriented Data Structuring schemas encapsulate state variables runtime fields procedures code wrappers classes initialization logic blueprints prototyping modules processing pipelines scaling frameworks systems.</p>
-                <div class="code-box">
-                    <span class="c-kw">class</span> <span class="c-fn">EnterpriseClusterNode</span>:<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;hardware_architecture_tag = <span class="c-str">"Intel Xeon / Linux Server Array Monolithic Shell"</span><br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-kw">def</span> <span class="c-fn">__init__</span>(self, dynamic_ip_assignment, active_load_cores):<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.dynamic_ip_assignment = dynamic_ip_assignment<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.active_load_cores = active_load_cores<br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-kw">def</span> <span class="c-fn">output_node_metrics</span>(self):<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-fn">print</span>(f<span class="c-str">"IP Routing Target Slot: {self.dynamic_ip_assignment} // Active Processing Cores Allocation: {self.active_load_cores}"</span>)<br><br>
-                    cluster_instance_element = EnterpriseClusterNode(<span class="c-str">"192.168.100.25"</span>, <span class="c-num">64</span>)<br>
-                    cluster_instance_element.output_node_metrics()
-                </div>
-            </div>
-
-            <div id="ch-11" class="chapter-content">
-                <h2 class="section-heading">Chapter 11: Class Inheritance & Overrides</h2>
-                <p class="book-text">Inheritance structures class specifications reuse codes properties extensions behaviors child slots polymorph configurations parent execution streams intercepts intercept pipelines patterns maps definition tracing fields models loops parameters clear updates structures setups layers system.</p>
-                <div class="code-box">
-                    <span class="c-kw">class</span> <span class="c-fn">MainframeCoreEngine</span>:<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-kw">def</span> <span class="c-fn">trigger_system_boot</span>(self):<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-fn">print</span>(<span class="c-str">"Master System Board Power Rails Operational. Peripheral Verification Success Clear Codes Nodes."</span>)<br><br>
-                    <span class="c-kw">class</span> <span class="c-fn">VirtualizationHypervisorLayer</span>(MainframeCoreEngine):<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-kw">def</span> <span class="c-fn">trigger_system_boot</span>(self):<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-kw">super</span>().trigger_system_boot() <span class="c-cm"># Executing parent structural flow logic patterns</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-fn">print</span>(<span class="c-str">"Nested Hypervisor Active. Spinning Container Clusters Nodes Framework Virtual Environment Configurations Core."</span>)<br><br>
-                    hypervisor_deployment_node = VirtualizationHypervisorLayer()<br>
-                    hypervisor_deployment_node.trigger_system_boot()
-                </div>
-            </div>
-
-            <div id="ch-12" class="chapter-content">
-                <h2 class="section-heading">Chapter 12: Advanced Engine Blueprint 1</h2>
-                <p class="book-text">Advanced specifications blocks exception routing systems multi handling configurations try statements intercept blocks errors exceptions evaluations checks layouts execution layers setups modules logic patterns data maps.</p>
-                <div class="code-box">
-                    <span class="c-kw">try</span>:<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;target_system_input_register = <span class="c-fn">int</span>(<span class="c-fn">input</span>(<span class="c-str">"Insert Pure Integer Values Matrix Parameter Slot: "</span>))<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;mathematical_evaluation_payload = <span class="c-num">5000</span> / target_system_input_register<br>
-                    <span class="c-kw">except</span> <span class="c-fn">ValueError</span>:<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-fn">print</span>(<span class="c-str">"Format Struct Input Exception Detected. Numerical String Misalignments Core Error Handled Successfully."</span>)<br>
-                    <span class="c-kw">except</span> <span class="c-fn">ZeroDivisionError</span>:<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-fn">print</span>(<span class="c-str">"Mathematical Runtime Logic Error Intercepted: Division operations via zero dimensions are blocked constraints rules."</span>)<br>
-                    <span class="c-kw">finally</span>:<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-fn">print</span>(<span class="c-str">"Pipeline Recovery State Configurations Reload Complete. Operational Status Continuous Safe State Matrix Clear."</span>)
-                </div>
-            </div>
-
-            <div id="ch-13" class="chapter-content">
-                <h2 class="section-heading">Chapter 13: Advanced Engine Blueprint 2</h2>
-                <p class="book-text">Functional processing architectures map parameters lambda micro-inline expressions array conversions filter filters loops parameters calculations optimizations performance scales setups model arrays traces schemas execution layout.</p>
-                <div class="code-box">
-                    raw_telemetry_stream_buffer = [<span class="c-num">14</span>, <span class="c-num">51</span>, <span class="c-num">88</span>, <span class="c-num">22</span>, <span class="c-num">43</span>, <span class="c-num">106</span>]<br><br>
-                    <span class="c-cm"># Dynamic Lambda Function High Speed Statement Evaluation Mapping Structural Module Rules</span><br>
-                    calculate_squared_transform_lambda = <span class="c-kw">lambda</span> dataset_instance : dataset_instance ** <span class="c-num">2</span><br><br>
-                    <span class="c-cm"># Utilizing Map functional utility array data transform loop pipelines processing architectures</span><br>
-                    transformed_squared_matrix_payload = <span class="c-fn">list</span>(<span class="c-fn">map</span>(calculate_squared_transform_lambda, raw_telemetry_stream_buffer))<br><br>
-                    <span class="c-cm"># Utilizing Filter functional criteria evaluation logic arrays extraction selection patterns setup</span><br>
-                    filtered_even_metrics_array_storage = <span class="c-fn">list</span>(<span class="c-fn">filter</span>(<span class="c-kw">lambda</span> node_check : node_check % <span class="c-num">2</span> == <span class="c-num">0</span>, raw_telemetry_stream_buffer))<br><br>
-                    <span class="c-fn">print</span>(f<span class="c-str">"Map Functional Output Array Storage Sequence: {transformed_squared_matrix_payload}"</span>)<br>
-                    <span class="c-fn">print</span>(f<span class="c-str">"Filter Conditions Match Output Storage Coordinates: {filtered_even_metrics_array_storage}"</span>)
-                </div>
-            </div>
-
-            <div id="ch-14" class="chapter-content">
-                <h2 class="section-heading">Chapter 14: Capstone Automation Project</h2>
-                <p class="book-text">Welcome to the deployment module target capstone section block development structural blueprint environment layouts parameters configurations check tracking lines loops patterns updates fields records traces clear status.</p>
-                
-                <h3 class="sub-heading">Project Deployment Blueprint Target Source Code Script Matrix: The Perfect Guess Engine</h3>
-                <div class="code-box">
-                    <span class="c-kw">import</span> random <span class="c-cm"># Pseudo Number Generation Framework Module Core Tools</span><br><br>
-                    <span class="c-kw">def</span> <span class="c-fn">initiate_perfect_guess_game_engine</span>():<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;cryptographic_target_integer_node = random.randint(<span class="c-num">1</span>, <span class="c-num">100</span>)<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;computational_attempts_accumulator = <span class="c-num">0</span><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;user_guess_input_register_holder = <span class="c-kw">None</span><br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-fn">print</span>(<span class="c-str">"========================================================================="</span>)<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-fn">print</span>(<span class="c-str">"HAMRAZ CODE HUB ENTERPRISE AUTOMATION LABS CAPSTONE GAME PROJECT INTERFACE"</span>)<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-fn">print</span>(<span class="c-str">"========================================================================="</span>)<br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-kw">while</span> user_guess_input_register_holder != cryptographic_target_integer_node:<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-kw">try</span>:<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;user_guess_input_register_holder = <span class="c-fn">int</span>(<span class="c-fn">input</span>(<span class="c-str">"Predict Secret Integer Node Coordinates (1 to 100): "</span>))<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;computational_attempts_accumulator += <span class="c-num">1</span><br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-kw">if</span> user_guess_input_register_holder &gt; cryptographic_target_integer_node:<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-fn">print</span>(<span class="c-str">"Signal Alert: Predict Lower Numerical Parameter Scale Values Target Options Variables Bounds."</span>)<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-kw">elif</span> user_guess_input_register_holder &lt; cryptographic_target_integer_node:<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-fn">print</span>(<span class="c-str">"Signal Alert: Predict Higher Numerical Parameter Scale Values Target Options Variables Bounds."</span>)<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-kw">else</span>:<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-fn">print</span>(f<span class="c-str">"\n🎯 SUCCESS! Verification Match. Exact crypto target found: {cryptographic_target_integer_node}"</span>)<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-fn">print</span>(f<span class="c-str">"Total Algorithmic Iterations Resource Consumed Operations: {computational_attempts_accumulator}\n"</span>)<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-kw">except</span> <span class="c-fn">ValueError</span>:<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="c-fn">print</span>(<span class="c-str">"Invalid Input Configuration Detection Intercept Alert: Insert pure integer numeric data fields types registers loops only."</span>)<br><br>
-                    <span class="c-kw">if</span> __name__ == <span class="c-str">"__main__"</span>:<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;initiate_perfect_guess_game_engine()
-                </div>
-            </div>
-
-        </div>
-    </main>
-
-    <script>
-        function switchChapter(chapIdx) {
-            // Hide all textbook content panes configurations definitions rules layout
-            document.querySelectorAll('.chapter-content').forEach(content => content.classList.remove('active'));
-            
-            // Un-highlight previous interaction navigation pointer button arrays items
-            document.querySelectorAll('.chap-link').forEach(link => link.classList.remove('active'));
-            
-            // Map visibility variables configuration nodes directly to user request parameters arrays slots metrics
-            document.getElementById(`ch-${chapIdx}`).classList.add('active');
-            
-            // Highlight current button layout safely mapping targets instances interfaces modules arrays
-            const selectedButtonElement = document.querySelectorAll('.chap-link')[chapIdx - 1];
-            if(selectedButtonElement) selectedButtonElement.classList.add('active');
-            
-            // Auto scroll pane window directly to extreme upper coordinate limit safely
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    </script>
-</body>
-</html>
+    <p class="book-text"><strong>Example 4: External Module Logic Verification Terminal Control Simulator</strong></p>
+    <div class="code-box">
+        <span class="c-cm"># NOTE: To run this code on your machine, run 'pip install cowsay' in your system terminal.</span><br>
+        <span class="c-kw">import</span> cowsay<br>
+        <span class="c-kw">import</span> random<br><br>
+        quotes_matrix = [<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-str">"Python Core Matrix Layer is highly functional."</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-str">"Hamraz Code Hub brings premium code designs live."</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-str">"Clean code architecture is an absolute engineering art."</span><br>
+        ]<br><br>
+        selected_quote = random.choice(quotes_matrix)<br>
+        <span class="c-fn">print</span>(<span class="c-str">"--- PIP EXTERNAL EXECUTION SIMULATOR ENGINE ---"</span>)<br>
+        cowsay.cow(selected_quote)
+    </div>
+</div>
